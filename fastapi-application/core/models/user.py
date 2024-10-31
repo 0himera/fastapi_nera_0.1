@@ -14,5 +14,5 @@ from .mixins.int_id_pk import IntIdPkMixin
 class User(Base, IntIdPkMixin, SQLAlchemyBaseUserTable[UserIdType]):
 
 	@classmethod
-	def get_db(cls, session: AsyncSession):
+	def get_db(cls, session: "AsyncSession"):
 		return SQLAlchemyUserDatabase(session, cls)
