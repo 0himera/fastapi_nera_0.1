@@ -12,12 +12,13 @@ router = APIRouter(
 # /login
 # /logout
 router.include_router(
-    router=fastapi_users.get_auth_router(authentication_backend),
+    router=fastapi_users.get_auth_router(
+        authentication_backend,
+        requires_verification=True,
+    ),
 )
 # /register
-router.include_router(
-    router=fastapi_users.get_register_router(UserRead, UserCreate)
-)
+router.include_router(router=fastapi_users.get_register_router(UserRead, UserCreate))
 # /request-verify-token
 # /verify
 router.include_router(
