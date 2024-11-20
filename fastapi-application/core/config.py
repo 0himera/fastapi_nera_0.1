@@ -53,6 +53,18 @@ class AccessToken(BaseModel):
     verification_token_secret: str
 
 
+class EmailConfig(BaseModel):
+    MAIL_USERNAME: str
+    MAIL_PASSWORD: str
+    MAIL_FROM: str
+    MAIL_PORT: int
+    MAIL_SERVER: str
+    MAIL_TLS: bool
+    MAIL_SSL: bool
+    USE_CREDENTIALS: bool
+    VALIDATE_CERTS: bool
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=(".env.template", ".env"),
@@ -64,6 +76,8 @@ class Settings(BaseSettings):
     api: ApiPrefix = ApiPrefix()
     db: DatabaseConfig
     access_token: AccessToken
+    email: EmailConfig
+    frontend_url: str = "http://localhost:5173"
 
 
 settings = Settings()
