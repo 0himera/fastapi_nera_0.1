@@ -18,11 +18,18 @@ router.include_router(
     ),
 )
 # /register
-router.include_router(router=fastapi_users.get_register_router(UserRead, UserCreate))
+router.include_router(
+    router=fastapi_users.get_register_router(
+        UserRead,
+        UserCreate,
+    )
+)
 # /request-verify-token
 # /verify
 router.include_router(
-    router=fastapi_users.get_verify_router(UserRead),
+    router=fastapi_users.get_verify_router(
+        UserRead,
+    ),
 )
 # /forgot-password
 # /reset-password
