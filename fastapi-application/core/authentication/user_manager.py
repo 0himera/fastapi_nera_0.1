@@ -1,6 +1,8 @@
 import logging
 from typing import Optional, TYPE_CHECKING
 
+from api.dependencies.authentication.email_utils import send_verification_email, send_reset_password_email
+
 if TYPE_CHECKING:
     from fastapi import Request
 from fastapi_users import BaseUserManager, IntegerIDMixin
@@ -27,6 +29,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, UserIdType]):
             user.id,
         )
 
+
     async def on_after_request_verify(
         self,
         user: User,
@@ -39,6 +42,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, UserIdType]):
             token,
         )
         log.info("on_after_request_verify method called for user %r", user.id)
+        await send_verification_email(user.email, token)
 
     async def on_after_forgot_password(
         self,
@@ -51,3 +55,4 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, UserIdType]):
             user.id,
             token,
         )
+        await send_reset_password_email(user.email, token)
