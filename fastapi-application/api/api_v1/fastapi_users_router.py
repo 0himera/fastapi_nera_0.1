@@ -1,5 +1,3 @@
-import uuid
-
 from fastapi_users import FastAPIUsers
 
 from api.dependencies.authentication.backend import authentication_backend
