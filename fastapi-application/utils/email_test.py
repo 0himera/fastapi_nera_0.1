@@ -5,6 +5,6 @@ server.login("whychain@vk.com", "Fp2frTdepGJpR3eM0Syk")
 server.sendmail(
     "whychain@vk.com",
     "a_mir_m@mail.ru",
-    "Subject: Test Email\n\nThis is a test email."
+    "Subject: Test Email\n\nThis is a test email!"
 )
 server.quit()
