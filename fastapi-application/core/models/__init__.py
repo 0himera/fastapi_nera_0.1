@@ -4,7 +4,8 @@ __all__ = (
     "User",
     "AccessToken",
     "Product",
-    "Image"
+    "Image",
+    "Feedback"
 )
 
 from .db_helper import db_helper
@@ -13,3 +14,4 @@ from .product import Image
 from .product import Product
 from .user import User
 from .access_token import AccessToken
+from .feedback import Feedback
